@@ -1,0 +1,76 @@
+==================================================================
+https://keybase.io/the_jonsey
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://thejonsey.com
+  * I am the_jonsey (https://keybase.io/the_jonsey) on keybase.
+  * I have a public key with fingerprint 79F7 44CA 731F A08F E19A  C84A 1CEF BCE5 3C25 E068
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01208ca5e7ca6aaae4eabc7156d1947555b71e7cd70ef6ceb8431ec883ecd45c7bd80a",
+      "fingerprint": "79f744ca731fa08fe19ac84a1cefbce53c25e068",
+      "host": "keybase.io",
+      "key_id": "1cefbce53c25e068",
+      "kid": "0101ad06d04f41ff8beeba76b76a6e896bbeda7cb442c3e3d3a78295ada66b16609f0a",
+      "uid": "c5493b7ff898a82c9d0b3d94a10fec19",
+      "username": "the_jonsey"
+    },
+    "service": {
+      "hostname": "thejonsey.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1508228132,
+  "expire_in": 157680000,
+  "prev": "4ee092d135483c47a518fa3d28502112171aee269071498044ed5bb7d107c468",
+  "seqno": 22,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.76
+Comment: https://keybase.io/crypto
+
+yMNqAnicbVJ9TFVlHL5cKIJFKLJRzbh4wOQCg/Oe73NBhYnkFvmBLYoxru95z3vu
+PQr3XO4H+RFuueQ6cEwhiQRNx3ADLURgAkMGRI2lYGOxok1LBi6XQM5dSCDtXMr1
+T+8/797f73me3/M++w1HBBvCg9bP981kbPzVHnRz8KzX8MFMX8IRQtLkQ4TlCHEA
+r164WMZuj/WAKhMWggQUKSDIYh5BDkKIGQwlxAOWk4HI8CzLSjzQmzJPYoVDWBIY
+GmAkCDRGMsMiXpIFEhIphKI6bNjldKkOjy7LiwrPMAjyNFAgKSgYiBAJDAQIKxLC
+LI0oFpOcoBPtmjvA0M1J0I1TVU2v6Q/rqr3/wT/3TQIok5xMMgoDFEWQMJYgz0k8
+BzksiJwkYRnySGIYCtGYlmnIC5TIQhlynAQ4jhSVVd/eVTnEMiIt8bqOKECBQqJM
+SrQs6oZJBSMgBoBu7HLAEqyjPXZs3a853Hqe5SmEXi9TEQ5EG/jLf5h/IKlIK9Hp
+Tpfm0ZBWrLfsHo/TEmB6DjkD0A+xZP1XxCqpDllPUieUYZdb1RyEBehI5FEDqoAl
+BYoSAE2lEPigU3VhqxpAsDwnkPoJjMFluiSDMSlSMqBZRqARw0MWCAqkZUpgSQoA
+CvAAYkxxIskDRhRIhsEyK0m8DEgeMas5u3GpQyMslD7KA226plu1OaDH68JE+dBg
+YYghKNzw4gvGwIoZwsPWPF+8sM7IJaMffm5ubFzy4gfvtBg+o6L4HR0xheFKy/vb
+jg/7s3lt4VLlZbuZg9ErjdHTRYtLR8y977X/Vb/TmHD7tWljm6w0FPUovSt3ov6w
+JYYu506VNpSMLH+1Aw6mvHQ3rjg50uCHdZbr3sOPaio2/3waPhp/s19en+ftWOh4
+kLg96/wtlP6kuuqbrEsDrYULj2NsEbXZE1vG005eCXlS1H+sSb0xu9k3WX7X621a
+W++9R+wLm4IH29v/VI21ppVjdSMDzeTihWm/KXNjEq/4z9zn1OCb92vMTzPGTHmm
+qodPc7uGgJmpn5vMfyO7KDYYfDuftm8u0fXsttB3L6xgqD4CXpxcqRM3yc3Vmf2G
+q/1a22/FowUfpyj5OXTTnuHpeOv4lnUbHG/l9qTXCeq0fftp/6ve5dCqd7v3//BL
+i+nc77NfoNEbH2mmiTFfTW9UZVhcslDRXcmM5YTUXIshTF0Fs3PNkaOjQTVfpztz
+rmZnXYw/NZHuOXPrWsH52NKtu/bMVx/N6PpurVGuWLf4fSudWZ6ZdC66e+DskLfh
+zuTI7omTW+PM+bNvV9VHPK5VTlzYVt54uTOUjO2ae/nZYfpoVn7fjwmdrTNjya9U
+xccmlX3S1hPr9kUmbDr+af/uh/Y1FXunUn3tFmXDqdfnrptP/DTJ5TXv9PsSM3d1
+2G2+tCtf7v0btArCrA==
+=rJlT
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/the_jonsey
+
+==================================================================
+
