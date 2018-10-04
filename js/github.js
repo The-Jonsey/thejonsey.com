@@ -1,4 +1,10 @@
 window.onload = () => {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Phone/i.test(navigator.userAgent) ) {
+        let style = document.createElement("link");
+        style.setAttribute("rel", "stylesheet");
+        style.setAttribute("href", "css/mobile.css");
+        document.head.appendChild(style);
+    }
     $.get("/key.txt", (key) => {
         $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed?access_token=" + key, (repos) => {
             let wrapper = $(".github-wrapper-inner")[0];
