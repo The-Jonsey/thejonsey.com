@@ -1,25 +1,27 @@
 window.onload = () => {
-    $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed", (repos) => {
-        let wrapper = $(".github-wrapper-inner")[0];
-        repos.forEach((repo) => {
-            let item = document.createElement("div");
-            item.setAttribute("class", "github-item");
-            let header = document.createElement("h4");
-            let link = document.createElement("a");
-            link.setAttribute("href", repo.html_url);
-            link.innerText = repo.name;
-            header.appendChild(link);
-            item.appendChild(header);
-            let language = document.createElement("p");
-            language.innerHTML = "<i>Written in: </i> " + repo.language;
-            item.appendChild(language);
-            let times = document.createElement("small");
-            times.innerHTML = "<i>Created: </i>" + parseDate(repo.created_at) + " <i>Last Updated: </i>" + parseDate(repo.pushed_at);
-            item.appendChild(times);
-            let description = document.createElement("p");
-            description.innerText = repo.description;
-            item.appendChild(description);
-            wrapper.appendChild(item);
+    $.get("/key.txt", (key) => {
+        $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed?access_token=" + key, (repos) => {
+            let wrapper = $(".github-wrapper-inner")[0];
+            repos.forEach((repo) => {
+                let item = document.createElement("div");
+                item.setAttribute("class", "github-item");
+                let header = document.createElement("h4");
+                let link = document.createElement("a");
+                link.setAttribute("href", repo.html_url);
+                link.innerText = repo.name;
+                header.appendChild(link);
+                item.appendChild(header);
+                let language = document.createElement("p");
+                language.innerHTML = "<i>Written in: </i> " + repo.language;
+                item.appendChild(language);
+                let times = document.createElement("small");
+                times.innerHTML = "<i>Created: </i>" + parseDate(repo.created_at) + " <i>Last Updated: </i>" + parseDate(repo.pushed_at);
+                item.appendChild(times);
+                let description = document.createElement("p");
+                description.innerText = repo.description;
+                item.appendChild(description);
+                wrapper.appendChild(item);
+            });
         });
     });
 };
