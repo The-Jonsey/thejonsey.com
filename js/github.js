@@ -6,7 +6,7 @@ window.onload = () => {
         document.head.appendChild(style);
     }
     $.get("/key.txt", (key) => {
-        $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed?access_token=" + key, (repos) => {
+        $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed&access_token=" + key, (repos) => {
             let wrapper = $(".github-wrapper-inner")[0];
             repos.forEach((repo) => {
                 let item = document.createElement("div");
