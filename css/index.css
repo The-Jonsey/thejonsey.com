@@ -35,3 +35,9 @@ body {
     margin: 0 10px;
     flex-grow: 1;
 }
+
+
+hr {
+    border-top: 1px solid #555;
+    margin: 20px 25%;
+}

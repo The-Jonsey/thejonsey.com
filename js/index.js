@@ -4,6 +4,7 @@ window.onload = () => {
         style.setAttribute("rel", "stylesheet");
         style.setAttribute("href", "css/mobile.css");
         document.head.appendChild(style);
+        $(".col-md-3")[0].appendChild(document.createElement("hr"));
     }
     $.get("/key.txt", (key) => {
         $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed&access_token=" + key, (repos) => {

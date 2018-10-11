@@ -5,3 +5,6 @@
 .github-item {
     width: 100%;
 }
+.col-md-offset-3 div h4 {
+    text-align: center;
+}
