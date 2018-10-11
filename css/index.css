@@ -41,3 +41,12 @@ hr {
     border-top: 1px solid #555;
     margin: 20px 25%;
 }
+
+a {
+    color: #cc3333 !important;
+}
+
+a:hover, a:active {
+    color: #990000 !important;
+    text-decoration: none;
+}

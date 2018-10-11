@@ -13,8 +13,11 @@ window.onload = () => {
                 let item = document.createElement("div");
                 item.setAttribute("class", "github-item");
                 let header = document.createElement("h4");
+                //target="_blank" rel="noopener noreferrer"
                 let link = document.createElement("a");
                 link.setAttribute("href", repo.html_url);
+                link.setAttribute("target", "_blank");
+                link.setAttribute("rel", "noopener noreferrer");
                 link.innerText = repo.name;
                 header.appendChild(link);
                 item.appendChild(header);
