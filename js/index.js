@@ -30,6 +30,13 @@ window.onload = () => {
             });
         });
     });
+    $(".switcher").click((ev) => {
+        $("#container").children().fadeOut(200);
+        setTimeout(() => {
+            console.log("#" + ev.target.href.split("#")[1]);
+            $("#" + ev.target.href.split("#")[1]).fadeIn(200);
+        }, 200)
+    });
 };
 
 /*
