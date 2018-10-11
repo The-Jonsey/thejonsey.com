@@ -1,5 +1,5 @@
 window.onload = () => {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Phone/i.test(navigator.userAgent) ) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Phone/i.test(navigator.userAgent)) {
         let style = document.createElement("link");
         style.setAttribute("rel", "stylesheet");
         style.setAttribute("href", "css/mobile.css");
@@ -35,13 +35,15 @@ window.onload = () => {
         });
     });
     $(".switcher").click((ev) => {
-        $("#container").children().fadeOut(200);
-        setTimeout(() => {
-            $(ev.target.getAttribute("for")).fadeIn(200);
-        }, 200)
+        console.log(document.getElementById(ev.target.getAttribute("for").substr(1)));
+        if (document.getElementById(ev.target.getAttribute("for").substr(1)).style.display === "none") {
+            $("#container").children().fadeOut(200);
+            setTimeout(() => {
+                $(ev.target.getAttribute("for")).fadeIn(200);
+            }, 200);
+        }
     });
 };
-
 /*
 <div class="github-item">
     <h4><a href="https://github.com/the-jonsey/mysqcnl">MySQcnL</a></h4>
