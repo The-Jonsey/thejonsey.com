@@ -29,7 +29,7 @@ window.onload = () => {
                 $.get("https://api.github.com/repos/The-Jonsey/" + repo.name + "/commits?per_page=1&access_token=" + key, (commit) => {
                     let commitMessage = document.createElement("p");
                     commitMessage.innerHTML = "<i>latest commit:</i> " + commit[0].commit.message;
-                    item.appendChild(commit);
+                    item.appendChild(commitMessage);
                     let description = document.createElement("p");
                     description.innerText = repo.description;
                     item.appendChild(description);
