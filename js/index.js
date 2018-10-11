@@ -13,7 +13,6 @@ window.onload = () => {
                 let item = document.createElement("div");
                 item.setAttribute("class", "github-item");
                 let header = document.createElement("h4");
-                //target="_blank" rel="noopener noreferrer"
                 let link = document.createElement("a");
                 link.setAttribute("href", repo.html_url);
                 link.setAttribute("target", "_blank");
@@ -27,9 +26,14 @@ window.onload = () => {
                 let times = document.createElement("small");
                 times.innerHTML = "<i>Created: </i>" + parseDate(repo.created_at) + " <i>Last Updated: </i>" + parseDate(repo.pushed_at);
                 item.appendChild(times);
-                let description = document.createElement("p");
-                description.innerText = repo.description;
-                item.appendChild(description);
+                $.get("https://api.github.com/repos/The-Jonsey/" + repo.name + "/commits?per_page=1&access_token=" + key, (commit) => {
+                    let commitMessage = document.createElement("p");
+                    commitMessage.innerHTML = "<i>latest commit:</i> " + commit[0].commit.message;
+                    item.appendChild(commit);
+                    let description = document.createElement("p");
+                    description.innerText = repo.description;
+                    item.appendChild(description);
+                });
                 wrapper.appendChild(item);
             });
         });
