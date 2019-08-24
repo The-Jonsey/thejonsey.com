@@ -4,15 +4,18 @@ window.onload = () => {
         style.setAttribute("rel", "stylesheet");
         style.setAttribute("href", "css/mobile.css");
         document.head.appendChild(style);
-        $(".col-md-3")[0].appendChild(document.createElement("hr"));
     }
     $.get("/key.txt", (key) => {
         $.get("https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed&access_token=" + key, (repos) => {
-            let wrapper = $(".github-wrapper-inner")[0];
+            let wrapper = $("#projects .fp-tableCell")[0];
+            if (repos.length > 12) {
+                repos = repos.splice(0, 12);
+            }
+            let size = repos.length
             repos.forEach((repo) => {
                 let item = document.createElement("div");
-                item.setAttribute("class", "github-item");
-                let header = document.createElement("h4");
+                item.setAttribute("class", "slide github-item");
+                let header = document.createElement("h1");
                 let link = document.createElement("a");
                 link.setAttribute("href", repo.html_url);
                 link.setAttribute("target", "_blank");
@@ -34,6 +37,11 @@ window.onload = () => {
                     let description = document.createElement("p");
                     description.innerText = repo.description;
                     item.appendChild(description);
+                    size--
+                    if (size === 0) {
+                        fullpage_api.destroy("all");
+                        init(true);
+                    }
                 });
                 wrapper.appendChild(item);
             });
@@ -49,14 +57,6 @@ window.onload = () => {
         }
     });
 };
-/*
-<div class="github-item">
-    <h4><a href="https://github.com/the-jonsey/mysqcnl">MySQcnL</a></h4>
-    <p><i>Written in: </i> Node.JS, MySQL</p>
-    <p>A MySQL connector library, used for manipulating large amount of data.</p>
-</div>
- */
-
 
 function parseDate(date) {
     date = new Date(date);
@@ -66,4 +66,24 @@ function parseDate(date) {
 
 function zeroes(num) {
     return num < 10 ? "0" + num : num;
+}
+
+
+$(document).ready(function() {
+    init(false);
+});
+function init(navigation) {
+    $('#fullpage').fullpage({
+        //options here
+        autoScrolling:true,
+        loopBottom: true,
+        navigation: navigation,
+        navigationPosition: 'left',
+        slidesNavigation: true,
+        slidesNavPosition: 'bottom',
+        lazyLoading: false,
+    });
+
+    //methods
+    $.fn.fullpage.setAllowScrolling(true);
 }
