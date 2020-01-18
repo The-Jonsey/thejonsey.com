@@ -1,0 +1,17 @@
+{
+  "name": "thejonsey.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwind build css/index.css -o css/out/style.css -c ./tailwind.config.js",
+    "serve": "http-server -p 8080 -c-1 ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.12.1",
+    "tailwindcss": "^1.1.4"
+  }
+}
