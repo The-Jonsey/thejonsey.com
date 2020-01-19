@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "tailwind build css/index.css -o css/out/style.css -c ./tailwind.config.js",
+    "build:css": "tailwind build css/index.css -o css/out/style.css -c ./tailwind.config.js && purgecss --css css/out/style.css --content index.html -o css/out/ && minify css/out/style.css",
     "serve": "http-server -p 8080 -c-1 ."
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
     "http-server": "^0.12.1",
+    "minifier": "^0.8.1",
     "tailwindcss": "^1.1.4"
-  }
+  },
+  "dependencies": {}
 }
