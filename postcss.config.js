@@ -3,7 +3,6 @@ module.exports = {
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
-        require('postcss-font-awesome'),
         require("cssnano")({
             preset: 'default'
         }),
