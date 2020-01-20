@@ -20,6 +20,7 @@
     "tailwindcss": "^1.1.4"
   },
   "dependencies": {
-    "konami": "^1.6.2"
+    "konami": "^1.6.2",
+    "postcss-import": "latest"
   }
 }
