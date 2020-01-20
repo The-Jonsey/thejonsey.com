@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@responsive {
+    .bullet-red::marker {
+        color: #cc3333;
+    }
+}
