@@ -1,147 +1,27 @@
-body {
-  color: #fff;
-  font-family: sans-serif;
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+@import "./utilities.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
 }
 
-a {
-  text-decoration: none !important;
-}
+.faded {
+    -webkit-animation:fadeIn ease-in-out 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in-out 1;
+    animation:fadeIn ease-in-out 1;
 
-h1 {
-  margin: 20px 0;
-}
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 
-html, body {
-  width: 100%;
-  height: 100%;
-  scroll-behavior: smooth;
-}
-
-.github-item {
-  display: inline-block;
-  word-wrap: normal;
-  width: calc(33% - 20px);
-  flex-grow: 1;
-}
-
-a {
-  color: #cc3333;
-}
-
-a:hover, a:active {
-  color: #511414 !important;
-  text-decoration: none;
-}
-
-
-.contact {
-  margin: 0 30px;
-  font-size: 40px;
-}
-
-.contact a {
-  color: #8e2323;
-}
-
-.bio {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  background-color: #8e2323;
-}
-
-.bio-line-items p {
-  margin-bottom: 5px;
-  font-size: 125%;
-}
-
-.header div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-circle {
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  background: #cc3333;
-  padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-#fullpage .fp-section {
-  width: 100% !important;
-  padding: 0 !important;
-}
-
-.header, .projects {
-  background: #333;
-}
-
-#fp-nav ul li a span, .fp-slidesNav ul li a span {
-  background: #cc3333 !important;
-}
-
-#fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span {
-  background: #511414 !important;
-}
-
-.slide .fp-tableCell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.fp-left {
-  left: 0 !important;
-}
-
-.fp-controlArrow {
-
-  color: #c33 !important;
-}
-
-.fp-controlArrow.fp-prev {
-  border-color: transparent #c33 transparent transparent !important;
-  left: 45px;
-}
-
-.fp-controlArrow.fp-next {
-  border-color: transparent transparent transparent #c33 !important;
-  right: 45px;
-}
-
-.fp-bottom {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.repo-typescript {
-  background: rgb(43, 116, 137);
-}
-
-.repo-javascript {
-  background: rgb(82, 158, 67);
-}
-
-.repo-java {
-  background: rgb(253, 146, 36);
-}
-
-.repo-python {
-  background: rgb(53, 114, 165);
-}
-
-.repo-visual-basic {
-  background: rgb(148, 93, 183);
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
 }

@@ -1,84 +1,68 @@
 window.onload = () => {
-  init(false);
-  $.get("/key.txt", (key) => {
-    $.get(
-      "https://api.github.com/users/the-jonsey/repos?per_page=100&sort=pushed&access_token="
-      + key, (repos) => {
-        let wrapper = $("#projects .fp-tableCell")[0];
-        let size = repos.length;
-        repos.forEach((repo) => {
-          let item = document.createElement("div");
-          if (repo.language == null) {
-            size--;
-            return;
-          }
-          item.setAttribute("class", "slide github-item repo-" + repo.language.toLowerCase().replace(/\s/g, "-"));
-          let header = document.createElement("h1");
-          let link = document.createElement("a");
-          link.setAttribute("href", repo.html_url);
-          link.setAttribute("target", "_blank");
-          link.setAttribute("rel", "noopener noreferrer");
-          link.innerText = repo.name;
-          header.appendChild(link);
-          item.appendChild(header);
-          let language = document.createElement("p");
-          language.innerHTML = "<i>Written in: </i> " + repo.language;
-          item.appendChild(language);
-          let times = document.createElement("small");
-          times.innerHTML = "<i>Created: </i>" + parseDate(repo.created_at)
-              + " <i>Last Updated: </i>" + parseDate(repo.pushed_at);
-          item.appendChild(times);
-          $.get("https://api.github.com/repos/The-Jonsey/" + repo.name
-              + "/commits?per_page=1&access_token=" + key, (commit) => {
-            let commitMessage = document.createElement("p");
-            commitMessage.innerHTML = "<i>latest commit:</i> "
-                + commit[0].commit.message;
-            commitMessage.style.marginBottom = "0";
-            item.appendChild(commitMessage);
-            let description = document.createElement("p");
-            description.innerText = repo.description;
-            item.appendChild(description);
-            size--;
-            if (size === 0) {
-              fullpage_api.destroy("all");
-              init(true);
-            }
-          });
-          wrapper.appendChild(item);
-        });
+    new $(() => {
+        alert("Go away.");
     });
-  });
-  $(".switcher").click((ev) => {
-    console.log(
-        document.getElementById(ev.target.getAttribute("for").substr(1)));
-    if (document.getElementById(
-        ev.target.getAttribute("for").substr(1)).style.display === "none") {
-      $("#container").children().fadeOut(200);
-      setTimeout(() => {
-        $(ev.target.getAttribute("for")).fadeIn(200);
-      }, 200);
+
+    let darkToggle = document.getElementById("dark-mode");
+    let cookies = document.cookie.split(";");
+    let dark;
+    for (let cookie of cookies) {
+        if (cookie.split("=")[0].includes("dark")) {
+            dark = cookie.split("=")[1] === "true";
+        }
     }
-  });
+    if (!dark) {
+        document.cookie = "dark=false; expires=Thu, 31 Dec 2099 00:00:00 GMT";
+        dark = false;
+    }
+    toggleDarkMode(dark, darkToggle);
+    darkToggle.onclick = () => {
+        dark = !dark;
+        document.cookie = "dark=" + dark + "; expires=Thu, 31 Dec 2099 00:00:00 GMT";
+        toggleDarkMode(dark, darkToggle);
+    };
+    let panes = document.getElementsByClassName("fade-in");
+    window.onscroll = () => {
+        checkOnScreen(panes);
+    };
+    window.onresize = () => {
+        checkOnScreen(panes);
+    };
+    checkOnScreen(panes);
 };
 
-function parseDate(date) {
-  date = new Date(date);
-  return zeroes(date.getDate()) + "-" + zeroes(date.getMonth() + 1) + "-"
-      + date.getFullYear();
+function checkOnScreen(panes) {
+    let top = document.body.scrollTop;
+    let bottom = window.innerHeight + top;
+    for (let pane of panes) {
+        let rect = pane.getBoundingClientRect();
+        if (rect.top < bottom && rect.bottom > 0 && !pane.classList.contains("faded")) {
+            pane.classList.add("faded");
+        }
+    }
 }
 
-function zeroes(num) {
-  return num < 10 ? "0" + num : num;
+function toggleDarkMode(dark, darkToggle) {
+    if (dark) {
+        swapClasses("bg-light-background", "bg-dark-background");
+        swapClasses("text-light-text", "text-dark-text");
+        swapClasses("bg-light-panel", "bg-dark-panel");
+        swapClasses("text-light-gray", "text-dark-gray");
+        darkToggle.classList.remove("fa-moon");
+        darkToggle.classList.add("fa-sun");
+    } else {
+        swapClasses("bg-dark-background", "bg-light-background");
+        swapClasses("text-dark-text", "text-light-text");
+        swapClasses("bg-dark-panel", "bg-light-panel");
+        swapClasses("text-dark-gray", "text-light-gray");
+        darkToggle.classList.remove("fa-sun");
+        darkToggle.classList.add("fa-moon");
+    }
 }
 
-function init(navigation) {
-  $('#fullpage').fullpage({
-    autoScrolling: true,
-    loopBottom: true,
-    navigation: navigation,
-    navigationPosition: 'left',
-    slidesNavigation: true,
-    slidesNavPosition: 'bottom',
-    lazyLoading: false,
-  });
+function swapClasses(oldClass, newClass) {
+    for (let elem of document.querySelectorAll("." + oldClass)) {
+        elem.classList.remove(oldClass);
+        elem.classList.add(newClass);
+    }
 }
