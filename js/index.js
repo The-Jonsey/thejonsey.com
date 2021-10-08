@@ -6,10 +6,16 @@ window.onload = () => {
     let darkToggle = document.getElementById("dark-mode");
     let cookies = document.cookie.split(";");
     let dark;
+    let darkFound = false;
     for (let cookie of cookies) {
         if (cookie.split("=")[0].includes("dark")) {
             dark = cookie.split("=")[1] === "true";
+            darkFound = true;
         }
+    }
+    if (!darkFound && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.cookie = "dark=true; expires=Thu, 31 Dec 2099 00:00:00 GMT";
+        dark = true;
     }
     if (!dark) {
         document.cookie = "dark=false; expires=Thu, 31 Dec 2099 00:00:00 GMT";
