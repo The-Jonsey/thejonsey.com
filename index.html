@@ -25,9 +25,9 @@
         <span id="dark-mode" class="fa fa-moon text-2xl cursor-pointer"></span>
     </div>
 </div>
-<div class="w-full flex flex-col items-center justify-center p-6 pt-8 lg:p-10 lg:pb-0 lg:pt-8 text-light-text">
-    <div class="w-full flex flex-col md:flex-row items-center md:items-start justify-center">
-        <div class="w-10/12 md:w-8/12 flex flex-col md:flex-row md:flex-wrap items-start justify-center md:justify-end md:mx-5">
+<div class="w-full flex flex-col items-center justify-center p-6 pt-8 xl:p-10 xl:pb-0 xl:pt-8 text-light-text">
+    <div class="w-full flex flex-col xl:flex-row items-center xl:items-start justify-center">
+        <div class="w-10/12 xl:w-8/12 flex flex-col xl:flex-row xl:flex-wrap items-center xl:items-start justify-center xl:justify-end md:mx-5">
             <div class="rounded w-full lg:w-8/12 h-auto p-10 bg-white shadow-lg mb-6 p-10 bg-light-panel fade-in">
                 <p class="text-center text-2xl font-black">Profile</p>
                 <div class="lg:flex lg:items-center p-6">
@@ -36,16 +36,13 @@
                     <div class="text-center lg:text-left">
                         <p class="text-lg font-bold">Louis Jones</p>
                         <p class="text-accent-solid">Computer Science graduate / Java Spring MVC Developer</p>
-                        <p>Email: <a class="text-accent-solid hover:underline font-bold" href="https://ljon.es/mail">mail@thejonsey.com</a>
-                        </p>
-                        <p>Twitter: <a class="text-accent-solid hover:underline font-bold" href="https://ljon.es/tw2">@LouisJDev</a>
-                        </p>
+                        <p>Get in touch: <span id="contact-form-button" class="cursor-pointer text-accent-solid hover:underline font-bold">Contact Form</span></p>
                         <p>GitHub: <a class="text-accent-solid hover:underline font-bold" href="https://ljon.es/gh">The-Jonsey</a>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="rounded w-full lg:w-8/12 h-auto p-10 bg-white shadow-lg bg-light-panel fade-in mb-6 lg:mb-0">
+            <div class="rounded w-full lg:w-8/12 h-auto p-10 bg-white shadow-lg bg-light-panel fade-in mb-6 xl:mb-0">
                 <p class="text-center text-2xl font-black">Skills</p>
                 <div class="w-full flex justify-start flex-row flex-wrap pt-6 text-left">
                     <div class="w-1/2 lg:w-1/3 mb-2">
@@ -106,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-10/12 md:w-8/12 flex flex-col md:flex-row md:flex-wrap items-start justify-center md:justify-start md:mx-5">
+        <div class="w-10/12 xl:w-8/12 flex flex-col xl:flex-row xl:flex-wrap items-center xl:items-start justify-center xl:justify-start md:mx-5">
             <div class="rounded w-full lg:w-8/12 h-auto p-10 bg-white shadow-lg mb-6 bg-light-panel fade-in">
                 <p class="text-center text-2xl font-black">Experience</p>
                 <div class="w-full flex flex-col justify-start md:justify-between md:flex-row md:flex-wrap p-6 text-left">
@@ -168,7 +165,31 @@
         </div>
     </div>
 </div>
+<div class="w-full h-full top-0 left-0 fixed hidden items-center justify-center bg-black bg-opacity-50" id="contact-form">
+    <div class="rounded w-full lg:w-8/12 h-auto p-10 bg-white shadow-lg mb-6 p-10 bg-light-panel">
+        <h1 class="text-4xl font-bold text-accent-solid">Get in touch</h1>
+        <hr class="border-accent-solid">
+        <form class="p-4 pt-8" name="Contact" netlify>
+            <div class="flex flex-row flex-wrap w-full my-2">
+                <div class="w-1/2 p-4">
+                    <label class="text-white block pb-2">Name:</label>
+                    <input class="rounded w-full mb-4 p-2 shadow-lg" type="text" name="Name" placeholder="Name">
+                </div>
+                <div class="w-1/2 p-4">
+                    <label class="text-white block pb-2">Email:</label>
+                    <input class="rounded w-full mb-4 p-2 shadow-lg" type="text" name="Email" placeholder="Email">
+                </div>
+                <div class="w-full p-4">
+                    <label class="text-white block pb-2 shadow-lg">Message:</label>
+                    <textarea name="Message" rows="3" class="w-full rounded p-2 resize-none"></textarea>
+                </div>
+            </div>
+            <button id="contact-form-close" type="submit" class="bg-accent-solid px-4 py-2 text-white rounded shadow-lg border border-white">Submit</button>
+        </form>
+    </div>
+</div>
 <script src="js/jquery.min.js"></script>
 <script src="js/index.js"></script>
+<script src="js/form.js"></script>
 </body>
 </html>

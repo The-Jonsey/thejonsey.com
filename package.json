@@ -11,13 +11,13 @@
   "license": "ISC",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",
-    "@fullhuman/postcss-purgecss": "^2.0.4",
-    "autoprefixer": "^9.7.4",
-    "cssnano": "^4.1.10",
-    "http-server": "^0.12.1",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "autoprefixer": "^10.0.2",
+    "cssnano": "^5.0.8",
+    "http-server": "^13.0.2",
     "minifier": "^0.8.1",
     "postcss-cli": "^8.0.0",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^2.2.16"
   },
   "dependencies": {
     "konami": "^1.6.2",
