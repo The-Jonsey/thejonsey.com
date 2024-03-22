@@ -1,16 +1,21 @@
 @import "tailwindcss/base.css";
 @import "tailwindcss/components.css";
 @import "tailwindcss/utilities.css";
-@import "../node_modules/swiper/swiper.min.css";
-@import "../node_modules/swiper/modules/pagination.min.css";
-@import "../node_modules/swiper/modules/navigation.min.css";
-/*@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css");*/
-@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-@import "./utilities.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@responsive {
+    .bullet-red::marker {
+        color: #cc3333;
+    }
+}
 
 .fade-in {
     opacity:0;  /* make things invisible upon start */
@@ -29,6 +34,6 @@
     -moz-animation-duration:1s;
     animation-duration:1s;
 }
-#slider-button-left:after {
-    content: "";
-}
+
+
+

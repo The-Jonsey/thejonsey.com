@@ -1,35 +1,25 @@
 {
-  "name": "thejonsey.com",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build:js": "browserify js/jquery.min.js js/form.js js/index.js  -p esmify | uglifyjs > js/main.js",
-    "build:css": "mkdir -p css/webfonts && cp node_modules/@fortawesome/fontawesome-free/webfonts/* css/webfonts/ && postcss --config postcss.config.js -o css/out/style.min.css css/index.css",
-    "build": "npm run build:css && npm run build:js",
-    "serve": "http-server ."
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2",
-    "@fullhuman/postcss-purgecss": "^4.0.3",
-    "autoprefixer": "^10.0.2",
-    "browserify": "^17.0.1",
-    "cssnano": "^5.0.8",
-    "esmify": "^2.1.1",
-    "http-server": "^13.0.2",
-    "minifier": "^0.8.1",
-    "postcss-cli": "^8.0.0",
-    "postcss-font-base64": "^1.0.5",
-    "postcss-import": "^16.1.0",
-    "postcss-minify": "^1.1.0",
-    "tailwindcss": "^2.2.16",
-    "uglify-js": "^3.19.3"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "konami": "^1.6.2",
-    "swiper": "^11.2.2"
+    "@astrojs/check": "^0.5.9",
+    "@astrojs/markdown-remark": "^4.3.1",
+    "@astrojs/mdx": "^2.2.1",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.5.8",
+    "rehype-mermaid": "^2.1.0",
+    "remark-mermaid": "^0.2.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.3"
   }
 }
