@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+debugger
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title + " | Louis Jones"} description={description} image={heroImage.toString()} />
+		<style>
+			main {
+				width: 100%;
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body class="bg-light-background">
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <img class="w-11/12 xl:w-2/3" src={heroImage} alt="" />}
+				</div>
+				<div class="prose w-11/12 xl:w-2/3">
+					<div class="title">
+						<div class="date italic">
+							Published: <FormattedDate date={pubDate} />
+							Last updated: <FormattedDate date={updatedDate || pubDate} />
+						</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+	</body>
+</html>

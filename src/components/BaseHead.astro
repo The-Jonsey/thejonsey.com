@@ -1,0 +1,122 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import '../styles/global.css';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE } from '../consts';
+import { DarkModeToggledEventEmitter } from '../DarkModeToggledEventEmitter'
+
+// interface Props {
+// 	title: string;
+// 	description: string;
+// 	image: string;
+// }
+
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.url.origin);
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = SITE_IMAGE } = Astro.props;
+
+const imageUrl =  new URL(image, Astro.url.origin);
+---
+
+<title>{title}</title>
+<link rel="shortcut icon" href="/img/ava-brand.jpg">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="title" content={title}>
+<meta name="description" content={description}>
+
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content={imageUrl}>
+<meta property="og:url" content={canonicalURL}>
+<meta name="theme-color" media="(prefers-color-scheme: dark)">
+
+<script>
+	import { DarkModeToggledEventEmitter } from "../DarkModeToggledEventEmitter";
+	window.onload = () => {
+	// new $(() => {
+	//     alert("Go away.");
+	// });
+
+	let darkToggle = document.getElementById("dark-mode");
+	let darkString = localStorage.getItem("dark")
+	let dark = false
+	if (darkString === null ) {
+		dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		localStorage.setItem("dark", "" + dark)
+	} else {
+		dark = darkString === "true"
+	}
+	DarkModeToggledEventEmitter.getInstance().addListener(toggleDarkMode)
+		DarkModeToggledEventEmitter.getInstance().addListener((dark) => {
+			if (dark) {
+				darkToggle.classList.remove("fa-moon");
+				darkToggle.classList.add("fa-sun");
+			} else {
+				darkToggle.classList.remove("fa-sun");
+				darkToggle.classList.add("fa-moon");
+			}
+		})
+	DarkModeToggledEventEmitter.getInstance().addListener(swapPreferredColorScheme)
+	DarkModeToggledEventEmitter.getInstance().emit(dark)
+	darkToggle.onclick = () => {
+		dark = !dark;
+		localStorage.setItem("dark", "" + dark)
+		DarkModeToggledEventEmitter.getInstance().emit(dark)
+	};
+	let panes = document.getElementsByClassName("fade-in");
+	window.onscroll = () => {
+		checkOnScreen(panes);
+	};
+	window.onresize = () => {
+		checkOnScreen(panes);
+	};
+	checkOnScreen(panes);
+};
+
+function checkOnScreen(panes) {
+	let top = document.body.scrollTop;
+	let bottom = window.innerHeight + top;
+	for (let pane of panes) {
+		let rect = pane.getBoundingClientRect();
+		if (rect.top < bottom && rect.bottom > 0 && !pane.classList.contains("faded")) {
+			pane.classList.add("faded");
+		}
+	}
+}
+
+function toggleDarkMode(dark) {
+	if (dark) {
+		swapClasses("bg-light-background", "bg-dark-background");
+		swapClasses("text-light-text", "text-dark-text");
+		swapClasses("bg-light-panel", "bg-dark-panel");
+		swapClasses("text-light-gray", "text-dark-gray");
+
+	} else {
+		swapClasses("bg-dark-background", "bg-light-background");
+		swapClasses("text-dark-text", "text-light-text");
+		swapClasses("bg-dark-panel", "bg-light-panel");
+		swapClasses("text-dark-gray", "text-light-gray");
+
+	}
+}
+
+function swapClasses(oldClass, newClass) {
+	for (let elem of document.querySelectorAll("." + oldClass)) {
+		elem.classList.remove(oldClass);
+		elem.classList.add(newClass);
+	}
+}
+
+function swapPreferredColorScheme(dark) {
+	for (let elem of document.querySelectorAll(`source[media=\"(prefers-color-scheme: ${!dark ? "dark" : "light"})\"]`) ) {
+		elem.setAttribute("media", `(prefers-color-scheme: ${dark ? "dark" : "light"})`.toString())
+	}
+}
+
+</script>

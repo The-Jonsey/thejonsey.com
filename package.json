@@ -1,26 +1,25 @@
 {
-  "name": "thejonsey.com",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build:css": "postcss --config postcss.config.js -o css/out/style.min.css css/index.css",
-    "serve": "http-server ."
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.0",
-    "@fullhuman/postcss-purgecss": "^4.0.3",
-    "autoprefixer": "^10.0.2",
-    "cssnano": "^5.0.8",
-    "http-server": "^13.0.2",
-    "minifier": "^0.8.1",
-    "postcss-cli": "^8.0.0",
-    "tailwindcss": "^2.2.16"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "konami": "^1.6.2",
-    "postcss-import": "latest"
+    "@astrojs/check": "^0.5.9",
+    "@astrojs/markdown-remark": "^4.3.1",
+    "@astrojs/mdx": "^2.2.1",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.5.8",
+    "rehype-mermaid": "^2.1.0",
+    "remark-mermaid": "^0.2.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.3"
   }
 }

@@ -1,0 +1,48 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+import '../../styles/blogpost.css';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogPost {...post.data}>
+	<script>
+		let codeBlocks = Array.from(document.querySelectorAll("pre"));
+		for (let codeBlock of codeBlocks) {
+			let wrapper = document.createElement("div");
+			wrapper.style.position = "relative";
+			let copyButton = document.createElement("button");
+			copyButton.className = "copy-code fas fa-copy";
+			codeBlock.setAttribute("tabindex", "0");
+			codeBlock.appendChild(copyButton);
+			codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+			wrapper.appendChild(codeBlock);
+			copyButton.addEventListener("click", async () => {
+				await copyCode(codeBlock, copyButton);
+				async function copyCode(block, button) {
+					let code = block.querySelector("code");
+					let text = code.innerText;
+
+					await navigator.clipboard.writeText(text);
+					button.className = "copy-code far fa-copy"
+
+					setTimeout(() => {
+						button.className = "copy-code fas fa-copy"
+					}, 700);
+				}
+			});
+		}
+	</script>
+	<Content />
+</BlogPost>
