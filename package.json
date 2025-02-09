@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "autoprefixer": "^10.0.2",
     "cssnano": "^5.0.8",
@@ -20,6 +20,7 @@
     "tailwindcss": "^2.2.16"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "konami": "^1.6.2",
     "postcss-import": "latest"
   }

@@ -50,17 +50,11 @@ function checkOnScreen(panes) {
 
 function toggleDarkMode(dark, darkToggle) {
     if (dark) {
-        swapClasses("bg-light-background", "bg-dark-background");
-        swapClasses("text-light-text", "text-dark-text");
-        swapClasses("bg-light-panel", "bg-dark-panel");
-        swapClasses("text-light-gray", "text-dark-gray");
+        swapClasses("light", "dark");
         darkToggle.classList.remove("fa-moon");
         darkToggle.classList.add("fa-sun");
     } else {
-        swapClasses("bg-dark-background", "bg-light-background");
-        swapClasses("text-dark-text", "text-light-text");
-        swapClasses("bg-dark-panel", "bg-light-panel");
-        swapClasses("text-dark-gray", "text-light-gray");
+        swapClasses("dark", "light");
         darkToggle.classList.remove("fa-sun");
         darkToggle.classList.add("fa-moon");
     }
@@ -72,3 +66,27 @@ function swapClasses(oldClass, newClass) {
         elem.classList.add(newClass);
     }
 }
+
+let swiper = new Swiper(".multiple-slide-carousel", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+        nextEl: ".multiple-slide-carousel .swiper-button-next",
+        prevEl: ".multiple-slide-carousel .swiper-button-prev",
+    },
+    breakpoints: {
+        2560: {
+            slidesPerView: 4,
+            spaceBetween: 30
+        },
+        1028: {
+            slidesPerView: 3,
+            spaceBetween: 30
+        },
+        990: {
+            slidesPerView: 1,
+            spaceBetween: 0
+        }
+    }
+});

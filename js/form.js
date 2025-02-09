@@ -1,9 +1,9 @@
 let form = document.getElementById("contact-form")
 
-document.getElementById("contact-form-button").onclick = () => {
+document.querySelectorAll(".contact-form-button").forEach(elem => elem.onclick = () => {
     form.classList.remove("hidden");
     form.classList.add("flex");
-};
+});
 
 document.getElementById("contact-form-close").onclick = () => {
     form.classList.remove("flex");
