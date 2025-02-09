@@ -76,12 +76,20 @@ let swiper = new Swiper(".multiple-slide-carousel", {
         prevEl: ".multiple-slide-carousel .swiper-button-prev",
     },
     breakpoints: {
+        3440: {
+            slidesPerView: 5,
+            spaceBetween: 30
+        },
         2560: {
             slidesPerView: 4,
             spaceBetween: 30
         },
-        1028: {
+        1920: {
             slidesPerView: 3,
+            spaceBetween: 30
+        },
+        1028: {
+            slidesPerView: 2,
             spaceBetween: 30
         },
         990: {
