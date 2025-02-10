@@ -96,7 +96,7 @@ new Swiper(".multiple-slide-carousel", {
             slidesPerView: 3,
             spaceBetween: 30
         },
-        1028: {
+        1080: {
             slidesPerView: 2,
             spaceBetween: 30
         },

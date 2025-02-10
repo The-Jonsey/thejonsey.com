@@ -29,3 +29,6 @@
     -moz-animation-duration:1s;
     animation-duration:1s;
 }
+#slider-button-left:after {
+    content: "";
+}
