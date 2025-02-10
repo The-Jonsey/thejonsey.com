@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:js": "browserify js/jquery.min.js js/form.js js/index.js  -p esmify | uglifyjs > js/main.js",
-    "build:css": "postcss --config postcss.config.js -o css/out/style.min.css css/index.css",
+    "build:css": "mkdir -p css/webfonts && cp node_modules/@fortawesome/fontawesome-free/webfonts/* css/webfonts/ && postcss --config postcss.config.js -o css/out/style.min.css css/index.css",
     "build": "npm run build:css && npm run build:js",
     "serve": "http-server ."
   },
@@ -21,7 +21,9 @@
     "http-server": "^13.0.2",
     "minifier": "^0.8.1",
     "postcss-cli": "^8.0.0",
+    "postcss-font-base64": "^1.0.5",
     "postcss-import": "^16.1.0",
+    "postcss-minify": "^1.1.0",
     "tailwindcss": "^2.2.16",
     "uglify-js": "^3.19.3"
   },

@@ -1,5 +1,6 @@
 module.exports = {
     plugins: [
+        require('postcss-font-base64'),
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
@@ -8,7 +9,9 @@ module.exports = {
         }),
         require("@fullhuman/postcss-purgecss")({
             content: ['./*.html', './js/*.js'],
-            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+            safelist: [/^fa-/, /^fas/, /^far/, /^fab/]
         }),
+        require("postcss-minify")
     ]
 };
