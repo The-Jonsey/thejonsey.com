@@ -10,7 +10,7 @@ module.exports = {
         require("@fullhuman/postcss-purgecss")({
             content: ['./*.html', './js/*.js'],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-            safelist: [/^fa-/, /^fas/, /^far/, /^fab/]
+            safelist: [/^fa-/, /^fas/, /^far/, /^fab/, /^swiper.*/, /^group/, /^multiple-slide-carousel/]
         }),
         require("postcss-minify")
     ]

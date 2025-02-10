@@ -1,5 +1,7 @@
 import Swiper from 'swiper';
+import {Navigation, Pagination} from 'swiper/modules';
 
+Swiper.use([Navigation, Pagination])
 
 window.onload = () => {
 
@@ -67,14 +69,20 @@ function swapClasses(oldClass, newClass) {
     }
 }
 
-let swiper = new Swiper(".multiple-slide-carousel", {
+new Swiper(".multiple-slide-carousel", {
     loop: true,
+    modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 20,
     navigation: {
-        nextEl: ".multiple-slide-carousel .swiper-button-next",
-        prevEl: ".multiple-slide-carousel .swiper-button-prev",
+        nextEl: document.getElementById("slider-button-right"),
+        prevEl: document.getElementById("slider-button-left"),
+        enabled: true
     },
+    init: true,
+    grabCursor: true,
+    observer: true,
+    observeParents: true,
     breakpoints: {
         3440: {
             slidesPerView: 5,
