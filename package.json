@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:js": "browserify js/jquery.min.js js/form.js js/index.js  -p esmify | uglifyjs > js/main.js",
     "build:css": "postcss --config postcss.config.js -o css/out/style.min.css css/index.css",
+    "build": "npm run build:css && npm run build:js",
     "serve": "http-server ."
   },
   "author": "",
@@ -13,15 +15,19 @@
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "autoprefixer": "^10.0.2",
+    "browserify": "^17.0.1",
     "cssnano": "^5.0.8",
+    "esmify": "^2.1.1",
     "http-server": "^13.0.2",
     "minifier": "^0.8.1",
     "postcss-cli": "^8.0.0",
-    "tailwindcss": "^2.2.16"
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^2.2.16",
+    "uglify-js": "^3.19.3"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "konami": "^1.6.2",
-    "postcss-import": "latest"
+    "swiper": "^11.2.2"
   }
 }

@@ -1,7 +1,7 @@
+import Swiper from 'swiper';
+
+
 window.onload = () => {
-    new $(() => {
-        alert("Go away.");
-    });
 
     let darkToggle = document.getElementById("dark-mode");
     let cookies = document.cookie.split(";");
