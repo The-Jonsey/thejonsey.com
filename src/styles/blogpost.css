@@ -25,7 +25,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
+  color: #cc3333;
   line-height: 1.2;
   position:relative;
 }
@@ -54,12 +54,12 @@ b {
   font-weight: 700;
 }
 
-a {
-  color: var(--accent);
+.blog > a {
+  color: #cc3333;
 }
 
 a:hover {
-  color: var(--accent);
+  color: #cc3333;
 }
 
 p {
@@ -83,13 +83,6 @@ table {
   width: 100%;
 }
 
-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
 code {
   padding: 2px 5px;
   background-color: rgb(var(--gray-light));
@@ -106,7 +99,7 @@ pre > code {
 }
 
 blockquote {
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid #cc3333;
   padding: 0 0 0 20px;
   margin: 0px;
   font-size: 1.333em;
@@ -147,19 +140,6 @@ hr {
   }
 }
 
-.bg-light-background {
-  color: black;
-}
-
-.bg-dark-background {
-  color: white;
-}
-
-a {
-  color: #cc3333;
-  text-decoration: underline;
-}
-
 ::marker {
   color: #cc3333;
 }
@@ -174,9 +154,6 @@ ol {
   list-style-position: inside;
 }
 
-img + em, picture + p em {
-  font-size: .75em;
-}
 
 .label foreignObject {
   overflow: visible;
@@ -195,4 +172,61 @@ img + em, picture + p em {
   font-size: 4rem;
   line-height: 4rem;
   border-top-right-radius: 7px;
+}
+
+
+picture, picture + p:has(em) {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li * {
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+ul li img {
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
+}
+
+ul li a {
+  display: block;
+}
+
+.title {
+  margin: 0;
+  color: rgb(var(--black));
+  line-height: 1;
+}
+
+.date {
+  margin: 0;
+  color: rgb(var(--gray));
+}
+
+ul li a:hover h4,
+ul li a:hover .date {
+  color: #cc3333;
+}
+
+ul a:hover img {
+  box-shadow: var(--box-shadow);
+}
+
+
+
+#content a {
+  color: #cc3333;
+  text-decoration: underline;
 }

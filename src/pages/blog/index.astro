@@ -11,53 +11,9 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="en">
 <head>
-  <BaseHead/>
-  <style>
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    ul li * {
-      text-decoration: none;
-      transition: 0.2s ease;
-    }
-
-    ul li img {
-      margin-bottom: 0.5rem;
-      border-radius: 12px;
-    }
-
-    ul li a {
-      display: block;
-    }
-
-    .title {
-      margin: 0;
-      color: rgb(var(--black));
-      line-height: 1;
-    }
-
-    .date {
-      margin: 0;
-      color: rgb(var(--gray));
-    }
-
-    ul li a:hover h4,
-    ul li a:hover .date {
-      color: rgb(var(--accent));
-    }
-
-    ul a:hover img {
-      box-shadow: var(--box-shadow);
-    }
-  </style>
+  <BaseHead title={"Blog" + " | Louis Jones"}/>
 </head>
-<body class="bg-light-background">
+<body class="dark bg-light-background">
 <Header/>
 <main class="w-full px-0 xl:px-8 flex justify-center">
   <section class="w-10/12 xl:w-2/3 p-2">
@@ -67,11 +23,13 @@ const posts = (await getCollection('blog')).sort(
       and there are no refreshments</p>
     <ul>
         {
+            posts.length ?
+            //@ts-ignore
             posts.sort((a, b) => b.data.pubDate - a.data.pubDate).map((post) => (
                 <li class="w-full fade-in">
                   <div class="flex flex-row w-full">
-                    <div class="w-1/2 px-2 pb-1 xl:p-2 flex justify-end">
-                      <img class="max-w-full max-h-48 xl:max-h-64" src={post.data.heroImage}
+                    <div class="w-1/2 px-2 pb-1 xl:p-2 flex justify-end aspect-[16/9]">
+                      <img class="max-w-full w-auto h-auto aspect-[16/9] rounded-xl" src={post.data.heroImage}
                            alt=""/>
                     </div>
                     <div class="w-1/2 px-2 pb-1 pt-4 xl:pt-8 xl:p-2">
@@ -88,7 +46,8 @@ const posts = (await getCollection('blog')).sort(
                     </div>
                   </div>
                 </li>
-            ))
+            )) :
+                <div class="w-full h-full flex justify-center items-center"><span class="text-3xl text-accent-solid">Coming soon</span></div>
         }
     </ul>
   </section>

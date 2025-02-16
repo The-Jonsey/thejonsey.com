@@ -2,8 +2,8 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE } from '../consts';
-import { DarkModeToggledEventEmitter } from '../DarkModeToggledEventEmitter'
+import {SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE} from '../consts';
+import {DarkModeToggledEventEmitter} from '../DarkModeToggledEventEmitter'
 
 // interface Props {
 // 	title: string;
@@ -14,13 +14,15 @@ import { DarkModeToggledEventEmitter } from '../DarkModeToggledEventEmitter'
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.url.origin);
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = SITE_IMAGE } = Astro.props;
+const {title = SITE_TITLE, description = SITE_DESCRIPTION, image = SITE_IMAGE} = Astro.props;
 
-const imageUrl =  new URL(image, Astro.url.origin);
+const imageUrl = new URL(image, Astro.url.origin);
 ---
 
 <title>{title}</title>
-<link rel="shortcut icon" href="/img/ava-brand.jpg">
+<link rel="shortcut icon" href={SITE_IMAGE}>
+
+<meta charset="UTF-8">
 
 <meta charset="UTF-8">
 
@@ -28,95 +30,96 @@ const imageUrl =  new URL(image, Astro.url.origin);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="title" content={title}>
-<meta name="description" content={description}>
+<meta name="description"
+      content={description}>
 
 <meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
+<meta property="og:description"
+      content={description}>
 <meta property="og:image" content={imageUrl}>
-<meta property="og:url" content={canonicalURL}>
-<meta name="theme-color" media="(prefers-color-scheme: dark)">
+<meta property="og:url" content="https://thejonsey.com">
 
 <script>
-	import { DarkModeToggledEventEmitter } from "../DarkModeToggledEventEmitter";
-	window.onload = () => {
-	// new $(() => {
-	//     alert("Go away.");
-	// });
+    import {DarkModeToggledEventEmitter} from "../DarkModeToggledEventEmitter";
 
-	let darkToggle = document.getElementById("dark-mode");
-	let darkString = localStorage.getItem("dark")
-	let dark = false
-	if (darkString === null ) {
-		dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		localStorage.setItem("dark", "" + dark)
-	} else {
-		dark = darkString === "true"
-	}
-	DarkModeToggledEventEmitter.getInstance().addListener(toggleDarkMode)
-		DarkModeToggledEventEmitter.getInstance().addListener((dark) => {
-			if (dark) {
-				darkToggle.classList.remove("fa-moon");
-				darkToggle.classList.add("fa-sun");
-			} else {
-				darkToggle.classList.remove("fa-sun");
-				darkToggle.classList.add("fa-moon");
-			}
-		})
-	DarkModeToggledEventEmitter.getInstance().addListener(swapPreferredColorScheme)
-	DarkModeToggledEventEmitter.getInstance().emit(dark)
-	darkToggle.onclick = () => {
-		dark = !dark;
-		localStorage.setItem("dark", "" + dark)
-		DarkModeToggledEventEmitter.getInstance().emit(dark)
-	};
-	let panes = document.getElementsByClassName("fade-in");
-	window.onscroll = () => {
-		checkOnScreen(panes);
-	};
-	window.onresize = () => {
-		checkOnScreen(panes);
-	};
-	checkOnScreen(panes);
-};
+    // window.addEventListener("load", () => {
 
-function checkOnScreen(panes) {
-	let top = document.body.scrollTop;
-	let bottom = window.innerHeight + top;
-	for (let pane of panes) {
-		let rect = pane.getBoundingClientRect();
-		if (rect.top < bottom && rect.bottom > 0 && !pane.classList.contains("faded")) {
-			pane.classList.add("faded");
-		}
-	}
-}
+        let darkToggle = document.getElementById("dark-mode");
+        let cookies = document.cookie.split(";");
+        let dark;
+        let darkFound = false;
+        for (let cookie of cookies) {
+            if (cookie.split("=")[0].includes("dark")) {
+                dark = cookie.split("=")[1] === "true";
+                darkFound = true;
+            }
+        }
+        if (!darkFound && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.cookie = "dark=true; path=/; expires=Thu, 31 Dec 2099 00:00:00 GMT";
+            dark = true;
+        }
+        if (!dark) {
+            document.cookie = "dark=false; path=/; expires=Thu, 31 Dec 2099 00:00:00 GMT";
+            dark = false;
+        }
+        DarkModeToggledEventEmitter.getInstance().addListener(toggleDarkMode)
+        DarkModeToggledEventEmitter.getInstance().addListener((dark) => {
+            document.cookie = "dark=" + dark + "; path=/; expires=Thu, 31 Dec 2099 00:00:00 GMT";
+            if (dark) {
+                darkToggle.classList.remove("fa-moon");
+                darkToggle.classList.add("fa-sun");
+            } else {
+                darkToggle.classList.remove("fa-sun");
+                darkToggle.classList.add("fa-moon");
+            }
+        })
+        // DarkModeToggledEventEmitter.getInstance().addListener(swapPreferredColorScheme)
+        DarkModeToggledEventEmitter.getInstance().emit(dark)
+        darkToggle.onclick = () => {
+            dark = !dark;
+            localStorage.setItem("dark", "" + dark)
+            DarkModeToggledEventEmitter.getInstance().emit(dark)
+        };
+        let panes = document.getElementsByClassName("fade-in");
+        window.onscroll = () => {
+            checkOnScreen(panes);
+        };
+        window.onresize = () => {
+            checkOnScreen(panes);
+        };
+        checkOnScreen(panes);
+    // });
 
-function toggleDarkMode(dark) {
-	if (dark) {
-		swapClasses("bg-light-background", "bg-dark-background");
-		swapClasses("text-light-text", "text-dark-text");
-		swapClasses("bg-light-panel", "bg-dark-panel");
-		swapClasses("text-light-gray", "text-dark-gray");
+    function checkOnScreen(panes) {
+        let top = document.body.scrollTop;
+        let bottom = window.innerHeight + top;
+        for (let pane of panes) {
+            let rect = pane.getBoundingClientRect();
+            if (rect.top < bottom && rect.bottom > 0 && !pane.classList.contains("faded")) {
+                pane.classList.add("faded");
+            }
+        }
+    }
 
-	} else {
-		swapClasses("bg-dark-background", "bg-light-background");
-		swapClasses("text-dark-text", "text-light-text");
-		swapClasses("bg-dark-panel", "bg-light-panel");
-		swapClasses("text-dark-gray", "text-light-gray");
+    function toggleDarkMode(dark) {
+        let darkToggle = document.getElementById("dark-mode");
+        if (dark) {
+            swapClasses("light", "dark");
+            darkToggle.classList.remove("fa-moon");
+            darkToggle.classList.add("fa-sun");
+        } else {
+            swapClasses("dark", "light");
+            darkToggle.classList.remove("fa-sun");
+            darkToggle.classList.add("fa-moon");
+        }
+    }
 
-	}
-}
 
-function swapClasses(oldClass, newClass) {
-	for (let elem of document.querySelectorAll("." + oldClass)) {
-		elem.classList.remove(oldClass);
-		elem.classList.add(newClass);
-	}
-}
-
-function swapPreferredColorScheme(dark) {
-	for (let elem of document.querySelectorAll(`source[media=\"(prefers-color-scheme: ${!dark ? "dark" : "light"})\"]`) ) {
-		elem.setAttribute("media", `(prefers-color-scheme: ${dark ? "dark" : "light"})`.toString())
-	}
-}
+    function swapClasses(oldClass, newClass) {
+        for (let elem of document.querySelectorAll("." + oldClass)) {
+            elem.classList.remove(oldClass);
+            elem.classList.add(newClass);
+        }
+    }
 
 </script>

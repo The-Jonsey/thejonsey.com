@@ -35,5 +35,56 @@
     animation-duration:1s;
 }
 
+@layer base {
+
+    body {
+        --color-nav: #eee;
+        --color-panel: #fff;
+        --color-bg: #fff;
+        --color-text: #000;
+        --color-border: #333;
+    }
+
+    body[class~="dark"] {
+        --color-nav: #333;
+        --color-panel: #444;
+        --color-bg: #222;
+        --color-text: #fff;
+        --color-border: #fff;
+    }
+}
 
 
+.bg-nav {
+    background-color: var(--color-nav);
+}
+
+.bg-panel, .bg-light-panel {
+    background-color: var(--color-panel);
+}
+
+.bg-light-background {
+    background-color: var(--color-bg);
+}
+
+.text-light-text {
+    color: var(--color-text);
+}
+
+.border-light-border {
+    border-color: var(--color-border);
+}
+
+
+.swiper-backface-hidden .swiper-slide {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex !important;
+    position: relative;
+    transition-property: transform;
+    height: auto !important;
+}
