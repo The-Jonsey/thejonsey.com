@@ -255,12 +255,12 @@ const posts = (await getCollection('blog')).sort(
                                                         </div>
                                                         <div class="w-1/2 px-2 pb-1 pt-4 xl:pt-8 xl:p-2">
                                                             <a href={`/blog/${post.slug}`} class="cursor-pointer">
-                                                                <p class="text-2xl text-accent-solid">{post.data.title}
+                                                                <p class="text text-accent-solid">{post.data.title}
                                                                     <span
-                                                                            class="text-sm italic text-dark-gray"><FormattedDate
+                                                                            class="text-xs italic text-dark-gray"><FormattedDate
                                                                             date={post.data.pubDate}/></span></p>
                                                                 <div>
-                                                                    <p class="text-dark-gray">
+                                                                    <p class="text-dark-gray text-sm">
                                                                         {post.data.description}
                                                                     </p>
                                                                 </div>

@@ -228,5 +228,9 @@ ul a:hover img {
 
 #content a {
   color: #cc3333;
+}
+
+
+#content a:hover {
   text-decoration: underline;
 }
