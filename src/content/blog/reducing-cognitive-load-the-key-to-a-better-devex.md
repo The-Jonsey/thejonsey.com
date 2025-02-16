@@ -36,34 +36,3 @@ firstly need to understand what cognitive load is.
 
 
 ### Conclusions
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
-
-a
