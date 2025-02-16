@@ -16,7 +16,7 @@ export default defineConfig({
     rehypePlugins: [
       [rehypeMermaid, {
         strategy: 'img-svg',
-        dark: true
+        dark: true,
       }],
       [rehypeShiki, {
         theme: {
