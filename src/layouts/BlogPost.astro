@@ -1,0 +1,111 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+debugger
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title + " | Louis Jones"} description={description} image={heroImage.toString()} />
+		<style>
+			main {
+				width: 100%;
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.prose {
+				margin: auto;
+				padding: 1em;
+				color: var(--color-text);
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: var(--color-text);
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+
+			.blog {
+				color: var(--color-text);
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				color: #cc3333 !important;
+			}
+		</style>
+	</head>
+
+	<body class="dark bg-light-background blog">
+		<Header />
+		<main class="p-0">
+			<article>
+				<div id="hero-image" class="hero-image flex flex-col items-center justify-center w-full h-[350px] md:h-[600px] lg:h-[700px] overflow-hidden p-4 bg-light-background left-0" style="z-index: -1; transition: opacity 0.1s ease-out; top: 64px">
+					{heroImage && <img id="hero-image-img" class="w-auto h-auto max-w-full rounded-xl" src={heroImage} alt="" />}
+				</div>
+				<div class="w-full bg-nav relative border-accent-solid border-t-2" id="content">
+					<div class="prose w-11/12 xl:w-2/3 relative">
+						<div class="title">
+							<h1>{title}</h1>
+							<hr />
+						</div>
+						<slot />
+					</div>
+				</div>
+			</article>
+		</main>
+	<script>
+
+		function updateOpacity() {
+			let imageContainer = document.getElementById("hero-image");
+			let scrollY = window.scrollY;
+			let fadeHeight = imageContainer.offsetHeight; // Adjust this based on when you want it to fade out
+
+			let opacity = 1 - (scrollY / fadeHeight);
+			let scale = 1 - (scrollY / (fadeHeight * 4));
+			if (opacity < 0) opacity = 0; // Ensuring it doesn't go negative
+			if (scale < 0) scale = 0
+
+			document.getElementById("hero-image").style.opacity = String(opacity);
+			document.getElementById("hero-image-img").style.scale = String(scale)
+		}
+
+		function updateMargin() {
+			let imageContainer = document.getElementById("hero-image");
+			let content = document.getElementById("content");
+
+			let imageHeight = imageContainer.offsetHeight; // Get the height of the image container
+			imageContainer.style.position = "fixed"
+			content.style.marginTop = imageHeight + "px"; // Apply it as margin-top
+		}
+
+		// Run on page load
+		window.addEventListener("load", updateMargin);
+		window.addEventListener("load", updateOpacity);
+
+		// Run on window resize to keep it responsive
+		window.addEventListener("scroll", updateOpacity);
+		window.addEventListener("resize", updateOpacity);
+		window.addEventListener("resize", updateMargin);
+	</script>
+	</body>
+</html>

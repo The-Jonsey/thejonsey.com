@@ -1,0 +1,90 @@
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@responsive {
+    .bullet-red::marker {
+        color: #cc3333;
+    }
+}
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+}
+
+.faded {
+    -webkit-animation:fadeIn ease-in-out 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in-out 1;
+    animation:fadeIn ease-in-out 1;
+
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+@layer base {
+
+    body {
+        --color-nav: #eee;
+        --color-panel: #fff;
+        --color-bg: #fff;
+        --color-text: #000;
+        --color-border: #333;
+    }
+
+    body[class~="dark"] {
+        --color-nav: #333;
+        --color-panel: #444;
+        --color-bg: #222;
+        --color-text: #fff;
+        --color-border: #fff;
+    }
+}
+
+
+.bg-nav {
+    background-color: var(--color-nav);
+}
+
+.bg-panel, .bg-light-panel {
+    background-color: var(--color-panel);
+}
+
+.bg-light-background {
+    background-color: var(--color-bg);
+}
+
+.text-light-text {
+    color: var(--color-text);
+}
+
+.border-light-border {
+    border-color: var(--color-border);
+}
+
+
+.swiper-backface-hidden .swiper-slide {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex !important;
+    position: relative;
+    transition-property: transform;
+    height: auto !important;
+}
