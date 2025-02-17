@@ -1,6 +1,6 @@
 ---
 title: "Reducing Cognitive Load: The Key to a Better Developer Experience"
-description: Lorem ipsum dolor sit amet
+description: Learn how reducing cognitive load improves Developer Experience (DevEx) by minimizing distractions, streamlining workflows, and optimizing tooling, because no one wants more TPS reports.
 pubDate: Feb 12 2025
 heroImage: /img/blog-posts/reducing-cognitive-load.png
 ---
