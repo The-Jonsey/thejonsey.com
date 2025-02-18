@@ -249,7 +249,7 @@ const posts = (await getCollection('blog')).sort(
                                         posts.sort((a, b) => b.data.pubDate - a.data.pubDate).map((post) => (
                                                 <li class="w-full fade-in">
                                                     <div class="flex flex-row w-full">
-                                                        <div class="w-1/2 px-2 pb-1 xl:p-2 flex justify-end aspect-[16/9]">
+                                                        <div class="w-1/2 px-2 pb-1 xl:p-2 flex items-center justify-end aspect-[16/9]">
                                                             <img class="max-w-full w-auto h-auto aspect-[16/9] rounded-xl" src={post.data.heroImage}
                                                                  alt=""/>
                                                         </div>
@@ -257,10 +257,10 @@ const posts = (await getCollection('blog')).sort(
                                                             <a href={`/blog/${post.slug}`} class="cursor-pointer">
                                                                 <p class="text text-accent-solid">{post.data.title}
                                                                     <span
-                                                                            class="text-xs italic text-dark-gray"><FormattedDate
+                                                                            class="text-xs italic text-light-text"><FormattedDate
                                                                             date={post.data.pubDate}/></span></p>
                                                                 <div>
-                                                                    <p class="text-dark-gray text-sm">
+                                                                    <p class="text-light-text text-sm">
                                                                         {post.data.description}
                                                                     </p>
                                                                 </div>
