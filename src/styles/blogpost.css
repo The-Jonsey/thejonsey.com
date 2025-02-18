@@ -30,6 +30,16 @@ h6 {
   position:relative;
 }
 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+h6::selection,
+#content a::selection{
+  background: var(--color-border);
+}
+
 h1 {
   font-size: 3.052em;
 }
