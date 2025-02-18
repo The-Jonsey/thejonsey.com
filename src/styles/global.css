@@ -3,9 +3,32 @@
 @import "tailwindcss/utilities.css";
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
 
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 @tailwind base;
 @tailwind components;
@@ -18,21 +41,21 @@
 }
 
 .fade-in {
-    opacity:0;  /* make things invisible upon start */
+    opacity: 0; /* make things invisible upon start */
 }
 
 .faded {
-    -webkit-animation:fadeIn ease-in-out 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-    -moz-animation:fadeIn ease-in-out 1;
-    animation:fadeIn ease-in-out 1;
+    -webkit-animation: fadeIn ease-in-out 1; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation: fadeIn ease-in-out 1;
+    animation: fadeIn ease-in-out 1;
 
-    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-    -moz-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode: forwards; /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 
-    -webkit-animation-duration:1s;
-    -moz-animation-duration:1s;
-    animation-duration:1s;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
 }
 
 @layer base {
@@ -43,6 +66,7 @@
         --color-bg: #fff;
         --color-text: #000;
         --color-border: #333;
+        --color-image-border: #fff7;
     }
 
     body[class~="dark"] {
@@ -51,6 +75,7 @@
         --color-bg: #222;
         --color-text: #fff;
         --color-border: #fff;
+        --color-image-border: #2227;
     }
 }
 
@@ -80,6 +105,7 @@
     transform: translateZ(0);
     backface-visibility: hidden;
 }
+
 .swiper-slide {
     flex-shrink: 0;
     width: 100%;
@@ -87,4 +113,13 @@
     position: relative;
     transition-property: transform;
     height: auto !important;
+}
+
+
+::selection {
+    background: #cc3333;
+}
+
+.text-accent-solid::selection {
+    background: var(--color-border);
 }

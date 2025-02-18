@@ -19,6 +19,31 @@ const { Content } = await post.render();
 <BlogPost {...post.data}>
 	<script>
 		let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+		document.getElementById('content').addEventListener('click', function(event) {
+			if (event.target.tagName === 'IMG') {
+				const src = event.target.src;
+
+				// Create modal overlay
+				const modal = document.createElement('div');
+				modal.className = "modal"
+
+				// Create image inside modal
+				const img = document.createElement('img');
+				img.src = src;
+				img.className = "modal-img"
+
+				// Append elements
+				modal.appendChild(img);
+				document.body.appendChild(modal);
+
+				// Remove modal when clicked
+				modal.addEventListener('click', function() {
+					modal.remove();
+				});
+			}
+		});
+
 		for (let codeBlock of codeBlocks) {
 			let wrapper = document.createElement("div");
 			wrapper.style.position = "relative";

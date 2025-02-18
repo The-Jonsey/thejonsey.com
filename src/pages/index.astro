@@ -235,7 +235,7 @@ const posts = (await getCollection('blog')).sort(
             </div>
             <div class="swiper-slide h-auto flex">
                 <div class="bg-nav rounded-2xl flex flex-col items-center p-4 px-8 fade-in flex-1">
-                    <div class="text-2xl  text-accent-solid mb-4 font-bold">Blog</div>
+                    <div class="text-2xl  text-accent-solid mb-4 font-bold">Latest blog post</div>
                     <hr class="border-accent-solid w-full mb-4"/>
                     <div class="w-full h-full flex text-accent-solid">
                         <div class="overflow-y-scroll">
@@ -248,13 +248,13 @@ const posts = (await getCollection('blog')).sort(
 
                                         posts.sort((a, b) => b.data.pubDate - a.data.pubDate).map((post) => (
                                                 <a href={`/blog/${post.slug}`} class="cursor-pointer">
-                                                    <div class="flex xl:flex-row flex-col w-full">
-                                                        <div class="xl:w-1/2 w-full px-2 pb-1 xl:p-2 flex items-center justify-end aspect-[16/9]">
+                                                    <div class="flex flex-col w-full">
+                                                        <div class="w-full px-2 pb-1 xl:p-2 flex items-center justify-end aspect-[16/9]">
                                                             <img class="max-w-full w-auto h-auto aspect-[16/9] rounded-xl"
                                                                  src={post.data.heroImage}
                                                                  alt=""/>
                                                         </div>
-                                                        <div class="xl:w-1/2 w-full px-2 pb-1 pt-4 xl:pt-8 xl:p-2">
+                                                        <div class="w-full px-2 pb-1 pt-4 xl:pt-8 xl:p-2">
                                                             <p class="text-2xl text-accent-solid">{post.data.title} <span
                                                                     class="text-sm italic text-light-text"><FormattedDate
                                                                     date={post.data.pubDate}/></span></p>
@@ -266,7 +266,7 @@ const posts = (await getCollection('blog')).sort(
                                                         </div>
                                                     </div>
                                                 </a>
-                                        )) :
+                                        ))[0] :
                                             <div class="w-full h-full flex justify-center items-center"><span
                                                     class="text-3xl text-accent-solid">Coming soon</span></div>
                                 }

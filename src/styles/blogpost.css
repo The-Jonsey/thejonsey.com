@@ -247,3 +247,48 @@ ol {
 ol li::marker {
   font-weight: bold;
 }
+
+
+#content img {
+  display: block;
+  margin: auto;
+  max-width: 250px;
+  transition: width 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  border: 5px #8887 solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*#content p:has(img) {*/
+/*  position: relative;*/
+/*  overflow: visible;*/
+/*}*/
+
+/*#content img:hover {*/
+/*  width: auto;*/
+/*  max-width: unset;*/
+/*}*/
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.modal-img {
+  border: 10px #8887 solid;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+}
