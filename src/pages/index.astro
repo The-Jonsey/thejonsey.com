@@ -262,6 +262,16 @@ const posts = (await getCollection('blog')).sort(
                                                                 <p class="text-light-text">
                                                                     {post.data.description}
                                                                 </p>
+                                                                <p>
+                                                                    {
+                                                                        post.data.tags.map(tag => {
+                                                                            const sanitisedTag = tag.toLowerCase().replaceAll(" ", "-")
+                                                                            return <a
+                                                                                    class="text-accent-solid hover:underline cursor-pointer mx-1 italic"
+                                                                                    href=`/blog/tags/${sanitisedTag}`>#{tag}</a>
+                                                                        })
+                                                                    }
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
