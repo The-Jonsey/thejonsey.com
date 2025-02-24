@@ -22,7 +22,6 @@ export default defineConfig({
                 theme: {
                     name: "Code::Blocks",
                     "colors": {
-                        "editor.background": "#222222",
                         "editor.foreground": "#d1d1d1",
                         "editorBracketHighlight.foreground1": "#ff0000",
                         "editorBracketHighlight.foreground2": "#ff0000",

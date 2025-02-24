@@ -44,30 +44,30 @@ const { Content } = await post.render();
 			}
 		});
 
-		for (let codeBlock of codeBlocks) {
-			let wrapper = document.createElement("div");
-			wrapper.style.position = "relative";
-			let copyButton = document.createElement("button");
-			copyButton.className = "copy-code fas fa-copy";
-			codeBlock.setAttribute("tabindex", "0");
-			codeBlock.appendChild(copyButton);
-			codeBlock.parentNode.insertBefore(wrapper, codeBlock);
-			wrapper.appendChild(codeBlock);
-			copyButton.addEventListener("click", async () => {
-				await copyCode(codeBlock, copyButton);
-				async function copyCode(block, button) {
-					let code = block.querySelector("code");
-					let text = code.innerText;
-
-					await navigator.clipboard.writeText(text);
-					button.className = "copy-code far fa-copy"
-
-					setTimeout(() => {
-						button.className = "copy-code fas fa-copy"
-					}, 700);
-				}
-			});
-		}
+		// for (let codeBlock of codeBlocks) {
+		// 	let wrapper = document.createElement("div");
+		// 	wrapper.style.position = "relative";
+		// 	let copyButton = document.createElement("button");
+		// 	copyButton.className = "copy-code hidden hover:block fas fa-copy";
+		// 	codeBlock.setAttribute("tabindex", "0");
+		// 	codeBlock.appendChild(copyButton);
+		// 	codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+		// 	wrapper.appendChild(codeBlock);
+		// 	copyButton.addEventListener("click", async () => {
+		// 		await copyCode(codeBlock, copyButton);
+		// 		async function copyCode(block, button) {
+		// 			let code = block.querySelector("code");
+		// 			let text = code.innerText;
+		//
+		// 			await navigator.clipboard.writeText(text);
+		// 			button.className = "copy-code hidden hover:block far fa-copy"
+		//
+		// 			setTimeout(() => {
+		// 				button.className = "copy-code hidden hover:block fas fa-copy"
+		// 			}, 700);
+		// 		}
+		// 	});
+		// }
 	</script>
 	<Content />
 </BlogPost>

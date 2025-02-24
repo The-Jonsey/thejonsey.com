@@ -93,15 +93,8 @@ table {
   width: 100%;
 }
 
-code {
-  padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
-  border-radius: 2px;
-}
-
 pre {
-  padding: 1.5em;
-  border-radius: 8px;
+  padding: 1em;
 }
 
 pre > code {
@@ -168,11 +161,6 @@ ol {
 .label foreignObject {
   overflow: visible;
 }
-
-.astro-code {
-  border: 1px solid white;
-}
-
 .copy-code {
   position: absolute;
   top: 1px;
@@ -301,4 +289,15 @@ ol li::marker {
   border-radius: 10px;
   max-width: 90%;
   max-height: 90%;
+}
+
+.astro-code {
+  margin-bottom: 2em;
+  background: #22222277 !important;
+  border-radius: 8px;
+  border: 1px solid #fff7;
+}
+
+ul + h3, ol + h3 {
+  margin-top: 1em;
 }
