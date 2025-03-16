@@ -39,6 +39,7 @@ const imageUrl = new URL(image, Astro.url.origin);
       content={description}>
 <meta property="og:image" content={imageUrl}>
 <meta property="og:url" content={canonicalURL}>
+<link rel="canonical" href={canonicalURL} />
 
 <script>
     import {DarkModeToggledEventEmitter} from "../DarkModeToggledEventEmitter";
