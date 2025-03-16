@@ -179,20 +179,6 @@ picture, picture + p:has(em) {
   justify-content: center;
 }
 
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul li * {
-  text-decoration: none;
-  transition: 0.2s ease;
-}
-
 ul li img {
   margin-bottom: 0.5rem;
   border-radius: 12px;
@@ -300,4 +286,65 @@ ol li::marker {
 
 ul + h3, ol + h3 {
   margin-top: 1em;
+}
+
+.beoe.mermaid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.beoe.mermaid path {
+    stroke: var(--color-border) !important;
+}
+
+
+.nodeLabel, .edgeLabel {
+    color: var(--color-text) !important;
+}
+
+
+.node rect {
+    fill: var(--color-bg) !important;
+    stroke: #cc3333 !important;
+}
+
+.labelBkg, .edgeLabel, .edgeLabel p {
+    background-color: var(--color-bg) !important;
+}
+
+
+li p:first-of-type {
+    display: inline;
+    margin-left: 0 !important;
+}
+
+ol > li > * {
+    margin-left: 1em;
+}
+
+
+li ul li {
+    list-style-type: square;
+}
+
+ol p, ul p {
+    margin-bottom: 0 !important;
+}
+
+
+ol, ul {
+    display: block;
+}
+
+
+li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+
+blockquote {
+    color: #cc3333;
+    font-style: italic;
 }

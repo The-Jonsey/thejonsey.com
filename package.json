@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "link-media": "ln -s $(pwd)/src/content/blog/media $(pwd)/public/img/blog-posts",
-    "prepare:perform": "npm run link-media && npm run build"
+    "playwright-install": "playwright install",
+    "prepare:perform": "npm run playwright-install && npm run link-media && npm run build"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -18,10 +19,10 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^6.0.0",
+    "@beoe/rehype-mermaid": "^0.4.2",
     "@tailwindcss/vite": "^4.0.6",
     "astro": "^5.3.0",
     "playwright": "^1.50.1",
-    "rehype-mermaid": "^3.0.0",
     "remark-mermaid": "^0.2.0",
     "swiper": "^11.2.4",
     "tailwindcss": "^3.4.1",
