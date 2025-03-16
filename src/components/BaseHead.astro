@@ -30,6 +30,7 @@ const imageUrl = new URL(image, Astro.url.origin);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="title" content={title}>
+<meta name="author" content="Louis Jones"/>
 <meta name="description"
       content={description}>
 
@@ -37,7 +38,7 @@ const imageUrl = new URL(image, Astro.url.origin);
 <meta property="og:description"
       content={description}>
 <meta property="og:image" content={imageUrl}>
-<meta property="og:url" content="https://thejonsey.com">
+<meta property="og:url" content={canonicalURL}>
 
 <script>
     import {DarkModeToggledEventEmitter} from "../DarkModeToggledEventEmitter";
