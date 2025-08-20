@@ -21,7 +21,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@beoe/rehype-mermaid": "^0.4.2",
     "@tailwindcss/vite": "^4.1.4",
-    "astro": "^5.7.4",
+    "astro": "^5.13.2",
     "playwright": "^1.52.0",
     "remark-mermaid": "^0.2.0",
     "swiper": "^11.2.6",
