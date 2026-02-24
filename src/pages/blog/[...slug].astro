@@ -21,6 +21,20 @@ const { Content } = await post.render();
 
 <BlogPost {...post.data}>
 	<script>
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //     anchor.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //
+        //         document.querySelector(this.getAttribute('href')).scrollIntoView({
+        //             behavior: 'smooth'
+        //         });
+        //
+        //         setTimeout(() => {
+        //             window.location.hash = this.getAttribute('href')
+        //         }, 500)
+        //     });
+        // });
+
 		let codeBlocks = Array.from(document.querySelectorAll("pre"));
 
 		document.getElementById('content').addEventListener('click', function(event) {

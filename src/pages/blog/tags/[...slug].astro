@@ -51,9 +51,11 @@ const tagPosts = Astro.props.posts;
                             <li class="w-full fade-in">
                                 <div class="flex xl:flex-row flex-col w-full">
                                     <div class="xl:w-1/2 w-full px-2 pb-1 xl:p-2 flex items-center justify-end aspect-[16/9]">
-                                        <img class="max-w-full w-auto h-auto rounded-xl m-auto"
-                                             src={post.data.heroImage}
-                                             alt=""/>
+                                        <a href={`/blog/${post.slug}`} class="cursor-pointer">
+                                            <img class="max-w-full w-auto h-auto rounded-xl m-auto"
+                                                 src={post.data.heroImage}
+                                                 alt=""/>
+                                        </a>
                                     </div>
                                     <div class="xl:w-1/2 w-full px-2 pb-1 pt-4 xl:pt-8 xl:p-2">
                                         <a href={`/blog/${post.slug}`} class="cursor-pointer">

@@ -5,6 +5,8 @@ import {rehypeShiki} from '@astrojs/markdown-remark'
 import rehypeMermaid from "@beoe/rehype-mermaid";
 
 import tailwind from "@astrojs/tailwind";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +16,19 @@ export default defineConfig({
     integrations: [mdx(), sitemap(), tailwind()],
     markdown: {
         rehypePlugins: [
+            rehypeSlug,
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: 'wrap',
+                    headingProperties: {
+                        className: ['anchor'],
+                    },
+                    properties: {
+                        className: ['anchor-link'],
+                    },
+                }
+            ],
             [rehypeMermaid, {
                 strategy: 'inline'
             }],
@@ -280,6 +295,7 @@ export default defineConfig({
                     ]
                 }
             }],
+
         ],
         syntaxHighlight: false
     }
